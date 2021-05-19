@@ -24,6 +24,7 @@ def empty_space(board):
         for j, value in enumerate(row):
             if (value == 0):
                 return (i, j)
+    return None
 
 
 def valid_space(board, value, position):
@@ -51,6 +52,21 @@ def valid_space(board, value, position):
     return True
 
 
+def sudoku_solver(board):
+    empty_square = empty_space(board)
+    if not empty_square:
+        return True
+    row, column = empty_square
+    for i in range(1, BOARD_SIZE + 1):
+        if (valid_space(board, i, (row, column))):
+            board[row][column] = i
+            if sudoku_solver(board):
+                return True
+            board[row][column] = 0
+
+    return False
+
+
 # 9x9 Sudoku Board
 BOARD_SIZE = 9
 SQUARE_SIZE = 3
@@ -76,4 +92,6 @@ sudoku_board = [
 #     [1, 0, 0, 0],
 # ]
 
+display_board(sudoku_board)
+sudoku_solver(sudoku_board)
 display_board(sudoku_board)
