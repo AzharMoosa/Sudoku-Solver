@@ -76,10 +76,11 @@ def sudoku_solver(board):
     return False
 
 
+""" EXAMPLE BOARDS """
 # 9x9 Sudoku Board
 BOARD_SIZE = 9
 SQUARE_SIZE = 3
-sudoku_board = [
+sudoku_board_9x9_one = [
     [3, 0, 0, 2, 1, 0, 4, 0, 9],
     [0, 0, 6, 0, 8, 7, 5, 0, 0],
     [0, 8, 0, 5, 0, 9, 3, 0, 0],
@@ -90,16 +91,57 @@ sudoku_board = [
     [4, 3, 5, 0, 0, 0, 6, 1, 0],
     [0, 1, 2, 6, 3, 0, 0, 0, 4],
 ]
+sudoku_board_9x9_two = [
+    [0, 1, 5, 0, 6, 4, 2, 8, 0],
+    [2, 3, 0, 0, 0, 0, 5, 0, 7],
+    [6, 7, 0, 0, 0, 3, 0, 4, 0],
+    [0, 4, 0, 0, 0, 0, 7, 0, 0],
+    [0, 2, 0, 0, 0, 7, 0, 0, 1],
+    [0, 8, 0, 0, 2, 0, 0, 0, 4],
+    [0, 0, 7, 0, 1, 8, 3, 0, 2],
+    [0, 0, 0, 3, 4, 0, 0, 7, 6],
+    [3, 9, 0, 6, 0, 5, 4, 1, 0],
+]
+sudoku_board_9x9_three = [
+    [0, 5, 0, 8, 0, 7, 0, 0, 4],
+    [0, 8, 0, 0, 0, 0, 9, 0, 5],
+    [0, 0, 1, 0, 5, 4, 0, 0, 2],
+    [7, 3, 5, 1, 2, 0, 0, 9, 0],
+    [0, 2, 0, 0, 4, 0, 7, 6, 3],
+    [0, 0, 0, 0, 7, 0, 0, 2, 0],
+    [6, 1, 0, 2, 9, 0, 3, 0, 0],
+    [0, 0, 3, 0, 6, 0, 2, 0, 0],
+    [0, 0, 2, 7, 8, 0, 1, 4, 0]
+]
 
 # 4x4 Sudoku Board
 # BOARD_SIZE = 4
 # SQUARE_SIZE = 2
-# sudoku_board = [
-#     [3, 0, 0, 2],
-#     [0, 0, 6, 0],
-#     [0, 8, 0, 5],
-#     [1, 0, 0, 0],
-# ]
+sudoku_board_4x4_one = [
+    [0, 2, 0, 3],
+    [0, 3, 4, 2],
+    [0, 0, 0, 0],
+    [3, 0, 0, 1],
+]
+sudoku_board_4x4_two = [
+    [2, 0, 4, 3],
+    [0, 0, 2, 0],
+    [4, 3, 1, 0],
+    [0, 2, 3, 0],
+]
+sudoku_board_4x4_three = [
+    [0, 0, 0, 3],
+    [4, 0, 1, 2],
+    [1, 2, 3, 0],
+    [0, 0, 0, 0],
+]
 
-sudoku_solver(sudoku_board)
-display_board(sudoku_board)
+
+def main():
+    sudoku_solver(sudoku_board_9x9_one)
+    display_board(sudoku_board_9x9_one)
+
+
+# Driver Function
+if __name__ == "__main__":
+    main()
