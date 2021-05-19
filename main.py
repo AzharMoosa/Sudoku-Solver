@@ -19,6 +19,13 @@ def print_linebreak():
     print("-" * dash_number)
 
 
+def empty_space(board):
+    for i, row in enumerate(board):
+        for j, value in enumerate(row):
+            if (value == 0):
+                return (i, j)
+
+
 # 9x9 Sudoku Board
 board_size = 9
 square_size = 3
