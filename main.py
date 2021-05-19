@@ -1,3 +1,4 @@
+# Displays Sudoku Board
 def display_board(board):
     print_linebreak()
     for i, row in enumerate(board):
@@ -13,12 +14,14 @@ def display_board(board):
     print_linebreak()
 
 
+# Prints Line Break Depending On Board Size
 def print_linebreak():
-    scale = 23 / 9
-    dash_number = round(scale * BOARD_SIZE)
+    line_scale = 23 / 9
+    dash_number = round(line_scale * BOARD_SIZE)
     print("-" * dash_number)
 
 
+# Finds Empty Space
 def empty_space(board):
     for i, row in enumerate(board):
         for j, value in enumerate(row):
@@ -27,17 +30,22 @@ def empty_space(board):
     return None
 
 
+# Finds Valid Space
 def valid_space(board, value, position):
+    row, column = position
+
+    # Check Row
     for i in range(len(board[0])):
-        if (position[1] != i and board[position[0]][i] == value):
+        if (column != i and board[row][i] == value):
             return False
 
+    # Check Column
     for i in range(len(board)):
-        if (position[0] != i and board[i][position[1]] == value):
+        if (row != i and board[i][column] == value):
             return False
 
-    square_x = position[1] // SQUARE_SIZE
-    square_y = position[0] // SQUARE_SIZE
+    square_x = column // SQUARE_SIZE
+    square_y = row // SQUARE_SIZE
 
     search_start_y = square_y * SQUARE_SIZE
     search_end_y = square_y * SQUARE_SIZE + SQUARE_SIZE
@@ -52,11 +60,12 @@ def valid_space(board, value, position):
     return True
 
 
+# Backtracking Algorithm
 def sudoku_solver(board):
-    empty_square = empty_space(board)
-    if not empty_square:
+    empty = empty_space(board)
+    if not empty:
         return True
-    row, column = empty_square
+    row, column = empty
     for i in range(1, BOARD_SIZE + 1):
         if (valid_space(board, i, (row, column))):
             board[row][column] = i
@@ -92,6 +101,5 @@ sudoku_board = [
 #     [1, 0, 0, 0],
 # ]
 
-display_board(sudoku_board)
 sudoku_solver(sudoku_board)
 display_board(sudoku_board)
